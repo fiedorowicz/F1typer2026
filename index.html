@@ -200,6 +200,7 @@
 
   function zapiszTyp(round, sesja, typ, dnf, cb){
     fetch(API_URL, { method:"POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify({ gracz:STAN.gracz, pin:STAN.pin, round:round, sesja:sesja, typ:typ, dnf:dnf })
     }).then(function(r){ return r.json(); }).then(cb)
       .catch(function(){ cb({ ok:false, blad:"Błąd połączenia — spróbuj jeszcze raz." }); });
